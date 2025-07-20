@@ -1,0 +1,39 @@
+{
+  "name": "hangman",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "format": "prettier --write '**/*.{ts,tsx,md}'",
+    "lint": "eslint && next lint && tsc --noemit && prettier --check '**/*.{ts,tsx,md,scss}'"
+  },
+  "dependencies": {
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "next": "15.4.2"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@stylistic/eslint-plugin": "^5.2.0",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^8",
+    "eslint-config-next": "15.4.2",
+    "prettier": "^2.5.1",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "prettier": {
+    "trailingComma": "none",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true,
+    "arrowParens": "avoid",
+    "bracketSpacing": true,
+    "printWidth": 80
+  }
+}
