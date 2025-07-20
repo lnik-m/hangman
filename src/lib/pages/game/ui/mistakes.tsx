@@ -1,4 +1,4 @@
-import { DIFFICULTY, MISTAKE_LIMIT } from 'shared'
+import { DIFFICULTY, hangmanState, HangmanSvg } from 'shared'
 
 interface Props {
   mistakes: number
@@ -6,8 +6,8 @@ interface Props {
 
 export const Mistakes = ({ mistakes }: Props) => {
   return (
-    <>
-      {mistakes}/{MISTAKE_LIMIT[DIFFICULTY]} mistakes
-    </>
+    <div className="flex justify-center h-full">
+      <HangmanSvg state={hangmanState[DIFFICULTY][mistakes]} />
+    </div>
   )
 }
