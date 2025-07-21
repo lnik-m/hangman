@@ -15,8 +15,8 @@ export const Letters = ({ wordData, updateWordData }: Props) => {
 
   const getLetterClassName = ({ isUsed, isInWord }: LetterData) => {
     if (!isUsed) return ''
-    const color = isInWord ? 'green' : 'red'
-    return `text-${color}-600 border-${color}-600 bg-gray-100`
+    if (isInWord) return 'text-green-600 border-green-600 bg-gray-100'
+    return 'text-red-600 border-red-600 bg-gray-100'
   }
 
   return (
