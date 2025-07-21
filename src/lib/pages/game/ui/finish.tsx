@@ -28,16 +28,14 @@ export const Finish = ({ type, word, restartGame, lang }: Props) => {
   }
 
   return (
-    <div className="text-xl">
-      <h2 className="text-2xl font-black">{text[lang].title}</h2>
-      {type === 'lose' && (
-        <div className="mt-4">
-          {text[lang].word} <span className="font-bold">«{word}»</span>
-        </div>
-      )}
+    <div className="flex-col justify-items-center text-lg xl:text-xl 2xl:text-2xl text-center">
+      <h2 className="text-3xl 2xl:text-4xl font-black">{text[lang].title}</h2>
+      <div className="mt-4">
+        {text[lang].word} <span className="font-bold">«{word}»</span>
+      </div>
       <button
         onClick={restartGame}
-        className="mt-5 bg-white py-3 px-4 cursor-pointer rounded"
+        className="bg-white mt-8 py-3 px-12 cursor-pointer rounded"
       >
         {text[lang].button}
       </button>

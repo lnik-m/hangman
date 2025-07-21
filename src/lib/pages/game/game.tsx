@@ -44,13 +44,13 @@ export const Game = () => {
   }
 
   return (
-    <main className="font-sans flex items-center justify-items-center h-screen p-4 md:p-20 min-w-4/5 bg-blue-50">
-      <div className="flex flex-col md:flex-row w-full h-full">
-        <div className="w-full md:w-2/5 bg-blue-100 p-4 h-2/5 md:h-full">
+    <main className="bg-blue-50 font-sans flex items-center justify-items-center h-screen min-w-4/5 p-4 lg:p-20">
+      <div className="flex flex-col lg:flex-row h-full w-full">
+        <div className="bg-blue-100 h-2/5 w-full lg:h-full lg:w-2/5 p-4">
           <Mistakes mistakes={mistakes} />
         </div>
 
-        <div className="w-full md:w-3/5 bg-blue-200 p-4 h-3/5 md:h-full">
+        <div className="bg-blue-200 h-3/5 w-full lg:h-full lg:w-3/5 p-4">
           {renderState()}
         </div>
       </div>

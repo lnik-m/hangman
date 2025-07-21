@@ -1,5 +1,5 @@
 'use client'
-import { WordData } from 'shared'
+import { LetterData, WordData } from 'shared'
 
 interface Props {
   wordData: WordData
@@ -13,20 +13,22 @@ export const Letters = ({ wordData, updateWordData }: Props) => {
     updateWordData(wordData)
   }
 
+  const getLetterClassName = ({ isUsed, isInWord }: LetterData) => {
+    if (!isUsed) return ''
+    const color = isInWord ? 'green' : 'red'
+    return `text-${color}-600 border-${color}-600 bg-gray-100`
+  }
+
   return (
     <div className="flex items-center justify-center w-full mt-7 font-fancy">
-      <div className="flex items-center justify-center w-full md:gap-x-6 md:gap-y-2 gap-6 md:text-4xl text-2xl flex-wrap md:max-w-2/3">
+      <div className="flex flex-wrap md:max-w-2/3 items-center justify-center w-full text-2xl xl:text-3xl 2xl:text-4xl gap-x-4 gap-y-3 lg:gap-x-4 lg:gap-y-4">
         {Object.entries(wordData).map(
           ([letter, { isUsed, isInWord }], index) => {
             return (
               <button
-                className={`border-2 bg-gray-50 border-amber-200 border-dotted rounded-md not-disabled:hover:bg-amber-100 cursor-pointer disabled:cursor-not-allowed md:py-1 md:px-2 ${
-                  isUsed
-                    ? isInWord
-                      ? 'text-green-400 border-green-400 bg-gray-100'
-                      : 'text-red-400 border-red-400 bg-gray-100'
-                    : ''
-                }`}
+                className={`border-2 bg-gray-50 border-amber-200 border-dotted rounded-md not-disabled:hover:bg-amber-100 cursor-pointer disabled:cursor-not-allowed lg:py-1 lg:px-2 py-0.5 px-1 ${getLetterClassName(
+                  { isUsed, isInWord }
+                )}`}
                 disabled={isUsed}
                 key={`letters-${index}-${letter}`}
                 onClick={() => onClick(letter)}

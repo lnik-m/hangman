@@ -4,7 +4,7 @@ import { Difficulty, SupportedLangs, WordData } from './types'
 
 // TODO change settings, save in localStorage
 export const LANG: SupportedLangs = 'ru'
-export const DIFFICULTY: Difficulty = 'medium'
+export const DIFFICULTY: Difficulty = 'hard'
 
 // TODO get word and definition from API
 export const startGame = () => {
