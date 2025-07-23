@@ -1,13 +1,14 @@
-import { DIFFICULTY, hangmanState, HangmanSvg } from 'shared'
+import { Difficulty, hangmanState, HangmanSvg } from 'shared'
 
 interface Props {
   mistakes: number
+  difficulty: Difficulty
 }
 
-export const Mistakes = ({ mistakes }: Props) => {
+export const Mistakes = ({ mistakes, difficulty }: Props) => {
   return (
-    <div className="flex justify-center h-full">
-      <HangmanSvg state={hangmanState[DIFFICULTY][mistakes]} />
+    <div className="flex justify-center h-full relative">
+      <HangmanSvg state={hangmanState[difficulty][mistakes]} />
     </div>
   )
 }

@@ -1,14 +1,21 @@
 import { Difficulty, SupportedLangs } from './types'
+import easyEN from './words/en/easy'
+import mediumEN from './words/en/medium'
+import hardEN from './words/en/hard'
+
+import easyRU from './words/ru/easy'
+import mediumRU from './words/ru/medium'
+import hardRU from './words/ru/hard'
 
 export const words: Record<SupportedLangs, Record<Difficulty, string[]>> = {
   en: {
-    easy: ['zero', 'game', 'echo', 'ice', 'art'],
-    medium: ['oasis', 'wheat', 'random', 'hunger', 'granny'],
-    hard: ['tractor', 'cabbage', 'charcoal', 'cinnamon', 'saxophone']
+    easy: easyEN,
+    medium: mediumEN,
+    hard: hardEN
   },
   ru: {
-    easy: ['кот', 'лицо', 'окно', 'чудо', 'вода'],
-    medium: ['точка', 'плита', 'металл', 'одеяло', 'сериал'],
-    hard: ['барабан', 'линейка', 'фонарик', 'галактика', 'животное']
+    easy: easyRU,
+    medium: mediumRU,
+    hard: hardRU
   }
 }

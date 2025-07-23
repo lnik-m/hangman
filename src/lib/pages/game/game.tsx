@@ -1,10 +1,12 @@
 'use client'
-import { DIFFICULTY, LANG, MISTAKE_LIMIT, startGame, WordData } from 'shared'
+import { Difficulty, LANG, MISTAKE_LIMIT, startGame, WordData } from 'shared'
 import { useState } from 'react'
 import { Finish, Word, Letters, Mistakes } from './ui'
 
 export const Game = () => {
-  const { initWord, wordInitData } = startGame()
+  const [difficulty, setDifficulty] = useState<Difficulty>('medium')
+
+  const { initWord, wordInitData } = startGame(difficulty)
   const [word, setWord] = useState<string>(initWord)
   const [wordData, setWordData] = useState<WordData>(wordInitData)
 
@@ -13,16 +15,23 @@ export const Game = () => {
   ).length
 
   const restartGame = () => {
-    const { initWord, wordInitData } = startGame()
+    const newDifficulty: Difficulty = (() => {
+      const random = Math.floor(Math.random() * 3)
+      if (random === 0) return 'easy'
+      if (random === 1) return 'medium'
+      return 'hard'
+    })()
+    const { initWord, wordInitData } = startGame(newDifficulty)
     setWord(initWord)
     setWordData(wordInitData)
+    setDifficulty(newDifficulty)
   }
   const updateWordData = (wordData: WordData) => {
     setWordData({ ...wordData })
   }
 
   const renderState = () => {
-    const isLost = mistakes >= MISTAKE_LIMIT[DIFFICULTY]
+    const isLost = mistakes >= MISTAKE_LIMIT[difficulty]
     const isWon = !word.split('').filter(letter => !wordData[letter].isUsed)
       .length
 
@@ -47,7 +56,7 @@ export const Game = () => {
     <main className="bg-blue-50 font-sans flex items-center justify-items-center h-screen min-w-4/5 p-4 lg:p-20">
       <div className="flex flex-col lg:flex-row h-full w-full">
         <div className="bg-blue-100 h-2/5 w-full lg:h-full lg:w-2/5 p-4">
-          <Mistakes mistakes={mistakes} />
+          <Mistakes mistakes={mistakes} difficulty={difficulty} />
         </div>
 
         <div className="bg-blue-200 h-3/5 w-full lg:h-full lg:w-3/5 p-4">
