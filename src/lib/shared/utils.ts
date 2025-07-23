@@ -4,13 +4,11 @@ import { Difficulty, SupportedLangs, WordData } from './types'
 
 // TODO change settings, save in localStorage
 export const LANG: SupportedLangs = 'ru'
-export const DIFFICULTY: Difficulty = 'hard'
 
-// TODO get word and definition from API
-export const startGame = () => {
+export const startGame = (difficulty: Difficulty) => {
   const getRandomWord = () =>
-    words[LANG][DIFFICULTY][
-      Math.floor(Math.random() * words[LANG][DIFFICULTY].length)
+    words[LANG][difficulty][
+      Math.floor(Math.random() * words[LANG][difficulty].length)
     ]
   const initWord = getRandomWord()
   const wordInitData: WordData = {}
