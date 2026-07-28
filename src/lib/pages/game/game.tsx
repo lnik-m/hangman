@@ -1,49 +1,105 @@
 'use client'
-import { Difficulty, LANG, MISTAKE_LIMIT, startGame, WordData } from 'shared'
-import { useState } from 'react'
-import { Finish, Word, Letters, Mistakes } from './ui'
+import { useCallback, useEffect, useState } from 'react'
+import { useGetWord } from 'features/use-get-word'
+import {
+  type Difficulty,
+  type WordData,
+  LANG,
+  MISTAKE_LIMIT,
+  startGame
+} from 'shared'
+import {
+  Finish,
+  Word,
+  Letters,
+  Mistakes,
+  ErrorState,
+  LoadingSkeleton,
+  DifficultySelector
+} from './ui'
 
 export const Game = () => {
   const [difficulty, setDifficulty] = useState<Difficulty>('medium')
+  const [word, setWord] = useState<string>('')
+  const [wordData, setWordData] = useState<WordData>({})
+  const [gameStarted, setGameStarted] = useState(false)
 
-  const { initWord, wordInitData } = startGame(difficulty)
-  const [word, setWord] = useState<string>(initWord)
-  const [wordData, setWordData] = useState<WordData>(wordInitData)
+  const {
+    word: fetchedWord,
+    definition,
+    error,
+    getWord,
+    loading
+  } = useGetWord({ difficulty })
+
+  useEffect(() => {
+    if (fetchedWord && !gameStarted) {
+      const { initWord, wordInitData } = startGame(fetchedWord)
+      setWord(initWord)
+      setWordData(wordInitData)
+      setGameStarted(true)
+    }
+  }, [fetchedWord, difficulty, gameStarted])
+
+  useEffect(() => {
+    setGameStarted(false)
+    getWord()
+  }, [difficulty, getWord])
 
   const mistakes = Object.values(wordData).filter(
     ({ isInWord, isUsed }) => isUsed && !isInWord
   ).length
 
-  const restartGame = () => {
+  const restartGame = useCallback(() => {
     const newDifficulty: Difficulty = (() => {
       const random = Math.floor(Math.random() * 3)
       if (random === 0) return 'easy'
       if (random === 1) return 'medium'
       return 'hard'
     })()
-    const { initWord, wordInitData } = startGame(newDifficulty)
-    setWord(initWord)
-    setWordData(wordInitData)
     setDifficulty(newDifficulty)
-  }
-  const updateWordData = (wordData: WordData) => {
-    setWordData({ ...wordData })
-  }
+    setGameStarted(false)
+    setWordData({})
+  }, [])
+
+  const updateWordData = useCallback((newWordData: WordData) => {
+    setWordData({ ...newWordData })
+  }, [])
 
   const renderState = () => {
-    const isLost = mistakes >= MISTAKE_LIMIT[difficulty]
-    const isWon = !word.split('').filter(letter => !wordData[letter].isUsed)
-      .length
+    if (loading) {
+      return <LoadingSkeleton />
+    }
 
-    if (isLost || isWon)
+    if (error) {
+      return (
+        <ErrorState
+          restartGame={() => {
+            setGameStarted(false)
+            getWord()
+          }}
+        />
+      )
+    }
+
+    if (!gameStarted || !word) {
+      return <LoadingSkeleton />
+    }
+
+    const isLost = mistakes >= MISTAKE_LIMIT[difficulty]
+    const isWon = word.split('').every(letter => wordData[letter]?.isUsed)
+    if (isLost || isWon) {
       return (
         <Finish
-          type={isLost ? 'lose' : 'win'}
+          isLost={isLost}
           word={word}
+          definition={definition}
           restartGame={restartGame}
           lang={LANG}
         />
       )
+    }
+
     return (
       <>
         <Word word={word} wordData={wordData} />
@@ -58,8 +114,11 @@ export const Game = () => {
         <div className="bg-blue-100 h-2/5 w-full lg:h-full lg:w-2/5 p-4">
           <Mistakes mistakes={mistakes} difficulty={difficulty} />
         </div>
-
         <div className="bg-blue-200 h-3/5 w-full lg:h-full lg:w-3/5 p-4">
+          <DifficultySelector
+            value={difficulty}
+            onChange={newDifficulty => setDifficulty(newDifficulty)}
+          />
           {renderState()}
         </div>
       </div>

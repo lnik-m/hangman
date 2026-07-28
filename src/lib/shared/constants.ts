@@ -13,6 +13,20 @@ export const hangmanState: Record<Difficulty, number[]> = {
 }
 
 export const alphabet: Record<SupportedLangs, string[]> = {
-  en: 'abcdefghijklmnopqrstuvwxyz'.split(''),
-  ru: 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'.split('')
+  en: 'abcdefghijklmnopqrstuvwxyz'.split('')
 }
+
+const DIFFICULTY_LABELS: Record<Difficulty, string> = {
+  easy: 'Easy',
+  medium: 'Medium',
+  hard: 'Hard'
+}
+
+export const DIFFICULTY_LABELS_BY_LANG: Record<
+  SupportedLangs,
+  typeof DIFFICULTY_LABELS
+> = {
+  en: DIFFICULTY_LABELS
+}
+
+export const DIFFICULTIES: Difficulty[] = ['easy', 'medium', 'hard']

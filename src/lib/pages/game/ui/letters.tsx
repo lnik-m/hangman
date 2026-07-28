@@ -1,5 +1,5 @@
 'use client'
-import { LetterData, WordData } from 'shared'
+import type { LetterData, WordData } from 'shared'
 
 interface Props {
   wordData: WordData
@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const Letters = ({ wordData, updateWordData }: Props) => {
-  const onClick = (letter: string) => {
+  const handleClick = (letter: string) => {
     const updatedWordData = { ...wordData }
     updatedWordData[letter].isUsed = true
     updateWordData(wordData)
@@ -31,7 +31,7 @@ export const Letters = ({ wordData, updateWordData }: Props) => {
                 )}`}
                 disabled={isUsed}
                 key={`letters-${index}-${letter}`}
-                onClick={() => onClick(letter)}
+                onClick={() => handleClick(letter)}
               >
                 {letter}
               </button>

@@ -1,4 +1,4 @@
-import { Difficulty, hangmanState, HangmanSvg } from 'shared'
+import { type Difficulty, hangmanState, HangmanSvg } from 'shared'
 
 interface Props {
   mistakes: number
