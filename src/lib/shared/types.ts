@@ -1,4 +1,4 @@
-export type SupportedLangs = 'en' | 'ru'
+export type SupportedLangs = 'en'
 export type Difficulty = 'easy' | 'medium' | 'hard'
 
 export type LetterData = {
