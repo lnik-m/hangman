@@ -15,9 +15,6 @@ interface Props {
 
 export const DifficultySelector = ({ value, onChange }: Props) => {
   const [hovered, setHovered] = useState<Difficulty | null>(null)
-  const handleClick = (level: Difficulty) => {
-    onChange(level)
-  }
   return (
     <div className="flex flex-col items-center gap-2 mb-2">
       <div className="flex gap-2">
@@ -27,7 +24,7 @@ export const DifficultySelector = ({ value, onChange }: Props) => {
           return (
             <button
               key={level}
-              onClick={() => handleClick(level)}
+              onClick={() => onChange(level)}
               onMouseEnter={() => setHovered(level)}
               onMouseLeave={() => setHovered(null)}
               className="group relative flex flex-col items-center gap-1 p-2 rounded-xl transition-all duration-300 hover:scale-110"

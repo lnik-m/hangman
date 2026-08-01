@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "format": "prettier --write '**/*.{ts,tsx,md}'",
-    "lint": "eslint && next lint && tsc --noemit && prettier --check '**/*.{ts,tsx,md,scss}'"
+    "lint": "eslint && tsc --noemit && prettier --check '**/*.{ts,tsx,md,scss}'",
+    "test": "jest"
   },
   "dependencies": {
     "react": "19.1.0",
@@ -18,13 +19,20 @@
     "@eslint/eslintrc": "^3",
     "@stylistic/eslint-plugin": "^5.2.0",
     "@tailwindcss/postcss": "^4",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^7.0.0",
+    "@testing-library/react": "^16.3.2",
+    "@types/jest": "^30.0.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^8",
     "eslint-config-next": "15.4.2",
+    "jest": "^30.4.2",
+    "jest-environment-jsdom": "^30.4.1",
     "prettier": "^2.5.1",
     "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   },
   "prettier": {
