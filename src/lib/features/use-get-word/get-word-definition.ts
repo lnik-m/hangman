@@ -1,5 +1,3 @@
-const BASE_URL = 'https://api.dictionaryapi.dev'
-
 interface DictionaryDefinition {
   definition: string
 }
@@ -38,9 +36,7 @@ export const getWordDefinition = async (
   }
 
   try {
-    const response = await fetch(
-      `${BASE_URL}/api/v2/entries/en/${word.trim().toLowerCase()}`
-    )
+    const response = await fetch(`/api/dictionary/${word}`)
 
     if (!response.ok) {
       if (response.status === 404) {
