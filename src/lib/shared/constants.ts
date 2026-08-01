@@ -1,4 +1,4 @@
-import { Difficulty, SupportedLangs } from './types'
+import type { Difficulty, SupportedLangs } from './types'
 
 export const MISTAKE_LIMIT: Record<Difficulty, number> = {
   easy: 5,
@@ -30,3 +30,5 @@ export const DIFFICULTY_LABELS_BY_LANG: Record<
 }
 
 export const DIFFICULTIES: Difficulty[] = ['easy', 'medium', 'hard']
+
+export const LANG: SupportedLangs = 'en'

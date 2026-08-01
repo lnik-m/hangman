@@ -1,13 +1,7 @@
 'use client'
 import { useCallback, useEffect, useState } from 'react'
 import { useGetWord } from 'features/use-get-word'
-import {
-  type Difficulty,
-  type WordData,
-  LANG,
-  MISTAKE_LIMIT,
-  startGame
-} from 'shared'
+import { type Difficulty, LANG, MISTAKE_LIMIT } from 'shared'
 import {
   Finish,
   Word,
@@ -20,51 +14,29 @@ import {
 
 export const Game = () => {
   const [difficulty, setDifficulty] = useState<Difficulty>('medium')
-  const [word, setWord] = useState<string>('')
-  const [wordData, setWordData] = useState<WordData>({})
   const [gameStarted, setGameStarted] = useState(false)
 
-  const {
-    word: fetchedWord,
-    definition,
-    error,
-    getWord,
-    loading
-  } = useGetWord({ difficulty })
-
-  useEffect(() => {
-    if (fetchedWord && !gameStarted) {
-      const { initWord, wordInitData } = startGame(fetchedWord)
-      setWord(initWord)
-      setWordData(wordInitData)
-      setGameStarted(true)
-    }
-  }, [fetchedWord, difficulty, gameStarted])
-
-  useEffect(() => {
-    setGameStarted(false)
-    getWord()
-  }, [difficulty, getWord])
+  const { word, wordData, setWordData, definition, getWord, loading, error } =
+    useGetWord()
 
   const mistakes = Object.values(wordData).filter(
     ({ isInWord, isUsed }) => isUsed && !isInWord
   ).length
 
   const restartGame = useCallback(() => {
-    const newDifficulty: Difficulty = (() => {
-      const random = Math.floor(Math.random() * 3)
-      if (random === 0) return 'easy'
-      if (random === 1) return 'medium'
-      return 'hard'
-    })()
-    setDifficulty(newDifficulty)
     setGameStarted(false)
-    setWordData({})
-  }, [])
+    getWord({ difficulty })
+  }, [difficulty, getWord])
 
-  const updateWordData = useCallback((newWordData: WordData) => {
-    setWordData({ ...newWordData })
-  }, [])
+  useEffect(() => {
+    if (word && !gameStarted) {
+      setGameStarted(true)
+    }
+  }, [word, gameStarted])
+
+  useEffect(() => {
+    restartGame()
+  }, [difficulty, restartGame])
 
   const renderState = () => {
     if (loading) {
@@ -72,14 +44,7 @@ export const Game = () => {
     }
 
     if (error) {
-      return (
-        <ErrorState
-          restartGame={() => {
-            setGameStarted(false)
-            getWord()
-          }}
-        />
-      )
+      return <ErrorState restartGame={restartGame} />
     }
 
     if (!gameStarted || !word) {
@@ -103,7 +68,10 @@ export const Game = () => {
     return (
       <>
         <Word word={word} wordData={wordData} />
-        <Letters wordData={wordData} updateWordData={updateWordData} />
+        <Letters
+          wordData={wordData}
+          updateWordData={newData => setWordData({ ...newData })}
+        />
       </>
     )
   }
