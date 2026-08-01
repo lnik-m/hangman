@@ -23,12 +23,14 @@
 ## ✨ Features
 
 ### Core Gameplay
+
 - 🎯 **Guess letters** — click or tap letters to reveal them in the word
 - 🚫 **Mistake tracking** — each wrong guess adds a part to the hangman
 - 🏆 **Win/Lose states** — clear feedback with word reveal and definition
 - 🔄 **Auto-restart** — new game with random difficulty after each round
 
 ### Technical Highlights
+
 - ⚡ **Next.js 15 App Router** — server components for performance
 - 🎨 **Tailwind CSS 4** — modern utility-first styling
 - 📡 **Real dictionary API** — random words from random-words-api.kushcreates.com and definitions from Free Dictionary API
@@ -38,13 +40,13 @@
 
 ## 🛠️ Tech Stack
 
-| Category | Technologies |
-| :--- | :--- |
-| **Framework** | Next.js 15 (App Router) |
-| **Language** | TypeScript 5.9 |
-| **Styling** | Tailwind CSS 4 |
-| **Package Manager** | Bun |
-| **Linting** | ESLint, Prettier |
+| Category            | Technologies            |
+| :------------------ | :---------------------- |
+| **Framework**       | Next.js 15 (App Router) |
+| **Language**        | TypeScript 5.9          |
+| **Styling**         | Tailwind CSS 4          |
+| **Package Manager** | Bun                     |
+| **Linting**         | ESLint, Prettier        |
 
 ---
 
@@ -53,6 +55,7 @@
 **[https://hangman-eosin-sigma.vercel.app](https://hangman-eosin-sigma.vercel.app)**
 
 ---
+
 ## 📄 API
 
 - Random Words — https://random-words-api.kushcreates.com/api
