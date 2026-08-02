@@ -48,7 +48,7 @@ export const DifficultySelector = ({ value, onChange }: Props) => {
                 ${
                   isActive
                     ? 'text-purple-700 opacity-100'
-                    : 'text-gray-700 opacity-60'
+                    : 'text-gray-700 opacity-80'
                 }
                 ${isHovered ? 'opacity-100' : ''}
               `}
