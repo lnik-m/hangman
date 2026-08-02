@@ -58,7 +58,7 @@
 
 ## 📊 Lighthouse Performance
 
-Hangman achieves perfect scores across all Core Web Vitals on both mobile and desktop:
+Hangman achieves perfect scores across all Core Web Vitals on both [mobile](https://pagespeed.web.dev/analysis/https-hangman-eosin-sigma-vercel-app/0x92t2w0e3?hl=en-US&form_factor=mobile) and [desktop](https://pagespeed.web.dev/analysis/https-hangman-eosin-sigma-vercel-app/0x92t2w0e3?hl=en-US&form_factor=desktop):
 
 ### Mobile
 
