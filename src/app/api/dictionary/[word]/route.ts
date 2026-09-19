@@ -15,10 +15,18 @@ export async function GET(
     )
   }
 
-  const res = await fetch(
-    `${BASE_URL}/api/v2/entries/en/${word.trim().toLowerCase()}`
-  )
-  const data = await res.json()
+  try {
+    const res = await fetch(
+      `${BASE_URL}/api/v2/entries/en/${word.trim().toLowerCase()}`,
+      { signal: AbortSignal.timeout(3000) }
+    )
+    const data = await res.json()
 
-  return Response.json(data)
+    return Response.json(data)
+  } catch (error) {
+    return NextResponse.json(
+      { error: 'Dictionary request timed out or failed' },
+      { status: 504 }
+    )
+  }
 }
