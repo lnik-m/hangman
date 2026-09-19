@@ -7,7 +7,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript)](https://www.typescriptlang.org)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-06B6D4?logo=tailwindcss)](https://tailwindcss.com)
 [![Bun](https://img.shields.io/badge/Bun-1.0-black?logo=bun)](https://bun.sh)
-[![Lighthouse Performance](https://img.shields.io/badge/Performance-98%2F100-brightgreen?logo=lighthouse)]([https://pagespeed.web.dev/analysis/https-bead-loop-netlify-app/0dokmyqio5?form_factor=desktop](https://pagespeed.web.dev/analysis/https-hangman-eosin-sigma-vercel-app/0x92t2w0e3?hl=en-US&form_factor=mobile))
+[![Lighthouse Performance](https://img.shields.io/badge/Performance-98%2F100-brightgreen?logo=lighthouse)](<[https://pagespeed.web.dev/analysis/https-bead-loop-netlify-app/0dokmyqio5?form_factor=desktop](https://pagespeed.web.dev/analysis/https-hangman-eosin-sigma-vercel-app/0x92t2w0e3?hl=en-US&form_factor=mobile)>)
 
 ---
 
@@ -62,31 +62,31 @@ Hangman achieves perfect scores across all Core Web Vitals on both [mobile](http
 
 ### Mobile
 
-| Metric | Score | Status |
-| :--- | :--- | :--- |
-| **Performance** | 98/100 | ✅ Excellent |
-| **Accessibility** | 100/100 | ✅ Perfect |
-| **Best Practices** | 100/100 | ✅ Perfect |
-| **SEO** | 100/100 | ✅ Perfect |
-| **First Contentful Paint** | 0.8 s | ✅ Excellent |
-| **Largest Contentful Paint** | 2.3 s | ✅ Good |
-| **Total Blocking Time** | 0 ms | ✅ Excellent |
-| **Cumulative Layout Shift** | 0 | ✅ Perfect |
-| **Speed Index** | 2.2 s | ✅ Excellent |
+| Metric                       | Score   | Status       |
+| :--------------------------- | :------ | :----------- |
+| **Performance**              | 98/100  | ✅ Excellent |
+| **Accessibility**            | 100/100 | ✅ Perfect   |
+| **Best Practices**           | 100/100 | ✅ Perfect   |
+| **SEO**                      | 100/100 | ✅ Perfect   |
+| **First Contentful Paint**   | 0.8 s   | ✅ Excellent |
+| **Largest Contentful Paint** | 2.3 s   | ✅ Good      |
+| **Total Blocking Time**      | 0 ms    | ✅ Excellent |
+| **Cumulative Layout Shift**  | 0       | ✅ Perfect   |
+| **Speed Index**              | 2.2 s   | ✅ Excellent |
 
 ### Desktop
 
-| Metric | Score | Status |
-| :--- | :--- | :--- |
-| **Performance** | 100/100 | ✅ Perfect |
-| **Accessibility** | 100/100 | ✅ Perfect |
-| **Best Practices** | 100/100 | ✅ Perfect |
-| **SEO** | 100/100 | ✅ Perfect |
-| **First Contentful Paint** | 0.2 s | ✅ Excellent |
-| **Largest Contentful Paint** | 0.5 s | ✅ Excellent |
-| **Total Blocking Time** | 0 ms | ✅ Excellent |
-| **Cumulative Layout Shift** | 0 | ✅ Perfect |
-| **Speed Index** | 0.5 s | ✅ Excellent |
+| Metric                       | Score   | Status       |
+| :--------------------------- | :------ | :----------- |
+| **Performance**              | 100/100 | ✅ Perfect   |
+| **Accessibility**            | 100/100 | ✅ Perfect   |
+| **Best Practices**           | 100/100 | ✅ Perfect   |
+| **SEO**                      | 100/100 | ✅ Perfect   |
+| **First Contentful Paint**   | 0.2 s   | ✅ Excellent |
+| **Largest Contentful Paint** | 0.5 s   | ✅ Excellent |
+| **Total Blocking Time**      | 0 ms    | ✅ Excellent |
+| **Cumulative Layout Shift**  | 0       | ✅ Perfect   |
+| **Speed Index**              | 0.5 s   | ✅ Excellent |
 
 ---
 
